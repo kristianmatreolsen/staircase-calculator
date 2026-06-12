@@ -1,0 +1,8 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+  background: #06111C;
+  color: #A8C8E0;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  overflow: hidden;
+}

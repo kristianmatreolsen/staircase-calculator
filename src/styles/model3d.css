@@ -1,0 +1,10 @@
+.model3d-container {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  background: #06111C;
+}
+
+.model3d-container:active {
+  cursor: grabbing;
+}
