@@ -1,0 +1,12 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^cd /c/Development/staircase-calculator && python - <<'PY'\nfrom pathlib import Path\ntext = Path\\('src/views/Blueprint2D\\.jsx'\\)\\.read_text\\(\\)\nfor i,line in enumerate\\(text\\.splitlines\\(\\),1\\):\n    if '<text' in line and 'safeTextX' not in line and 'safeTextY' not in line and 'labelX' not in line and 'labelY' not in line:\n        print\\(i, line\\.strip\\(\\)\\)\nPY$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd /c/Development/staircase-calculator && python - <<'PY'\nfrom pathlib import Path\ntext = Path\\('src/views/Blueprint2D\\.jsx'\\)\\.read_text\\(\\)\nunsafe = \\[\\]\nfor i,line in enumerate\\(text\\.splitlines\\(\\),1\\):\n    if '<text' in line and 'safeTextX' not in line and 'safeTextY' not in line and 'labelX' not in line and 'labelY' not in line:\n        unsafe\\.append\\(\\(i, line\\.strip\\(\\)\\)\\)\nprint\\('\\\\n'\\.join\\(f'\\{i\\}: \\{l\\}' for i,l in unsafe\\) if unsafe else 'none'\\)\nPY$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

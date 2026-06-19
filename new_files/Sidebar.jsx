@@ -3,9 +3,9 @@ import StairTypeSelector from "./StairTypeSelector.jsx";
 import InputPanel from "./InputPanel.jsx";
 import ResultsPanel from "./ResultsPanel.jsx";
 
-export default function Sidebar({ stairType, region, inputs, result, onTypeChange, onInputChange, onRegionChange, className }) {
+export default function Sidebar({ stairType, region, inputs, result, onTypeChange, onInputChange, onRegionChange }) {
   return (
-    <div className={className} style={{
+    <div style={{
       width: 268,
       background: COLORS.panel,
       borderRight: `1px solid ${COLORS.border}`,
@@ -14,6 +14,7 @@ export default function Sidebar({ stairType, region, inputs, result, onTypeChang
       overflowY: "auto",
       flexShrink: 0,
     }}>
+      {/* Header */}
       <div style={{ padding: "18px 15px 14px", borderBottom: `1px solid ${COLORS.border}` }}>
         <div style={{ fontSize: 9, fontFamily: FONTS.mono, color: COLORS.accent, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 2 }}>
           Structural
@@ -26,8 +27,10 @@ export default function Sidebar({ stairType, region, inputs, result, onTypeChang
         </div>
       </div>
 
+      {/* Stair type picker */}
       <StairTypeSelector value={stairType} onChange={onTypeChange} />
 
+      {/* Inputs & code */}
       <InputPanel
         stairType={stairType}
         region={region}
@@ -36,6 +39,7 @@ export default function Sidebar({ stairType, region, inputs, result, onTypeChang
         onRegionChange={onRegionChange}
       />
 
+      {/* Results & compliance */}
       <ResultsPanel result={result} region={region} />
     </div>
   );
