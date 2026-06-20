@@ -1,92 +1,114 @@
 # Staircase Calculator
 
-A modular React application for calculating staircase dimensions according to various international building codes.
+A modular React application for calculating staircase dimensions according to multiple international building codes.
+
+## Live demo
+
+- https://kristianmatreolsen.github.io/staircase-calculator/
 
 ## Project Structure
 
 ```
 staircase-calculator/
-├── index.html                    # HTML entry point
-├── package.json                  # Dependencies and scripts
+├── .github/
+│   └── workflows/
+│       └── gh-pages.yml         # GitHub Actions workflow for Pages deployment
+├── dist/                        # Production build output (generated)
+├── index.html                   # Vite HTML entry point
+├── package.json                 # Dependencies and scripts
+├── package-lock.json            # Locked dependency tree
 ├── vite.config.js               # Vite configuration
 ├── .gitignore
-├── public/                       # Static assets (future)
 ├── src/
-│   ├── main.jsx                 # React entry point
-│   ├── App.jsx                  # Main application component
+│   ├── main.jsx                 # React app bootstrap
+│   ├── App.jsx                  # Root application component
 │   ├── components/
-│   │   ├── Sidebar.jsx          # Input controls and results display
-│   │   ├── Visualization.jsx    # 2D/3D view switcher
 │   │   ├── Blueprint.jsx        # 2D SVG blueprint visualization
-│   │   └── Model3D.jsx          # 3D Three.js visualization
+│   │   ├── InputPanel.jsx       # Sidebar input form
+│   │   ├── Model3D.jsx          # Three.js 3D model viewer
+│   │   ├── resultsPanel.jsx     # Calculation results display
+│   │   ├── Sidebar.jsx          # App control and output panel
+│   │   ├── StairTypeSelector.jsx# Staircase type controls
+│   │   └── Visualization.jsx    # View switching and rendering
+│   ├── config/
+│   │   └── buildingCodes.js     # Building code definitions
 │   ├── constants/
-│   │   └── buildingCodes.js     # Building code specifications
+│   │   └── buildingCodes.js     # Code rules and limits
 │   ├── utils/
-│   │   └── calculateStair.js    # Staircase calculation logic
-│   └── styles/
-│       ├── index.css            # Global styles and fonts
-│       ├── app.css              # App layout
-│       ├── sidebar.css          # Sidebar component styles
-│       ├── blueprint.css        # Blueprint component styles
-│       ├── model3d.css          # 3D model component styles
-│       └── visualization.css    # Visualization container styles
+│   │   ├── calculateStair.js    # Stair dimension logic
+│   │   └── calculations.js      # Calculation helpers
+│   ├── styles/
+│   │   ├── app.css
+│   │   ├── blueprint.css
+│   │   ├── index.css
+│   │   ├── model3d.css
+│   │   ├── sidebar.css
+│   │   ├── theme.js
+│   │   └── visualization.css
+│   └── views/
+│       ├── Blueprint2D.jsx
+│       └── Model3D.jsx
 ```
 
 ## Getting Started
 
 ### Installation
 
-1. Install dependencies:
 ```bash
 npm install
 ```
 
 ### Development
 
-Run the development server:
 ```bash
 npm run dev
 ```
 
-The app will open at `http://localhost:5173`
+Open `http://localhost:5173` in your browser.
 
 ### Build
 
-Build for production:
 ```bash
 npm run build
 ```
 
 ### Preview
 
-Preview the production build:
 ```bash
 npm run preview
 ```
+
+### GitHub Pages Deployment
+
+A GitHub Actions workflow publishes the app automatically from `main` to the `gh-pages` branch.
+
+- Workflow file: `.github/workflows/gh-pages.yml`
+- Published site: `https://kristianmatreolsen.github.io/staircase-calculator/`
 
 ## Architecture
 
 ### Components
 
-- **App.jsx** - Root component managing global state (region, view, inputs)
-- **Sidebar.jsx** - Left panel with inputs, settings, and results
-- **Visualization.jsx** - Viewer area with 2D/3D toggle
-- **Blueprint.jsx** - 2D SVG drawing of staircase
-- **Model3D.jsx** - 3D interactive model using Three.js
+- **App.jsx** - Root component managing global state, selected code, and view mode
+- **Sidebar.jsx** - Input controls, code selection, and results panel
+- **Visualization.jsx** - Toggles between 2D and 3D visualizations
+- **Blueprint.jsx** - Renders the staircase layout in 2D using SVG
+- **Model3D.jsx** - Renders an interactive 3D staircase model with Three.js
+- **InputPanel.jsx** - Handles user entry fields and form controls
+- **resultsPanel.jsx** - Shows calculated step, rise, run, and compliance results
+- **StairTypeSelector.jsx** - Switches staircase type and display options
 
 ### Utilities
 
-- **calculateStair.js** - Core calculation engine that computes stair dimensions and compliance
-- **buildingCodes.js** - Definitions for NO, US, GB, DE, and EU building codes
+- **calculateStair.js** - Core calculator for stair dimensions and code compliance
+- **calculations.js** - Supporting math and geometry helper functions
+- **buildingCodes.js** - Building code restrictions, limits, and defaults
 
 ### Styling
 
-All styles have been extracted from inline CSS-in-JS to separate CSS files:
-- Global styles and typography in `index.css`
-- Component-specific styles in dedicated files
-- No CSS-in-JS (easily migrated to CSS Modules or Tailwind if needed)
+All styles are organized into dedicated CSS files, with global styles in `index.css` and component-specific styles in the `styles/` folder.
 
-## Building Codes Supported
+## Supported Building Codes
 
 - **🇳🇴 Norway (TEK17)**
 - **🇺🇸 USA (IBC 2021)**
@@ -96,16 +118,16 @@ All styles have been extracted from inline CSS-in-JS to separate CSS files:
 
 ## Technologies
 
-- **React 18** - UI framework
-- **Vite** - Fast build tool
-- **Three.js** - 3D visualization
-- **CSS** - Component styling
+- React 18
+- Vite
+- Three.js
+- CSS
 
 ## Future Enhancements
 
-- Convert to CSS Modules for better scoping
-- Add unit tests for calculation logic
-- Add input validation and error messages
-- Export designs as PDF or DWG
-- Add more building codes
-- Accessibility improvements (a11y)
+- Convert styles to CSS Modules or another scoped styling approach
+- Add unit and integration tests for calculation logic
+- Improve input validation and user feedback
+- Add export options for drawings or reports
+- Expand support for more international building codes
+- Improve accessibility and keyboard navigation
